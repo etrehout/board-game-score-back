@@ -4,13 +4,24 @@ CREATE DATABASE IF NOT EXISTS board_game_score;
 
 USE board_game_score;
 
+CREATE TABLE IF NOT EXISTS role (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  PRIMARY KEY (id)
+); 
+
+INSERT INTO role (id, name) values (1, 'User');
+INSERT INTO role (id, name) values (2, 'Admin');
+
 CREATE TABLE IF NOT EXISTS user (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(50) NOT NULL,
   surname VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL,
-  password VARCHAR(50) NOT NULL,
-  PRIMARY KEY (id)
+  password VARCHAR(255) NOT NULL,
+  role_id INT NOT NULL DEFAULT(1),
+  PRIMARY KEY (id),
+  FOREIGN KEY (role_id) REFERENCES role(id) 
 );
 
 CREATE TABLE IF NOT EXISTS relationship (
