@@ -2,10 +2,12 @@ package board.game.score.back.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import board.game.score.back.entity.User;
 import board.game.score.back.repository.UserRepository;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -32,10 +35,15 @@ public class UserService implements UserDetailsService {
 	public User getUserByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
-	
+
 	public User registerUser(@Valid User user) {
+		Optional<User> userEmail = Optional.ofNullable(userRepository.findByEmail(user.getEmail()));
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		userRepository.save(user);
+		if (userEmail.isPresent()) {
+			throw new UsernameNotFoundException("Email cannot be empty.");
+		} else {
+			userRepository.save(user);
+		}
 		return user;
 	}
 	
