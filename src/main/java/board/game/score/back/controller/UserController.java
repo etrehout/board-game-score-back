@@ -38,7 +38,7 @@ public class UserController {
     
     @PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public User addUser(@Valid @RequestBody UserDto user, BindingResult bindingResult) {
+	public User addUser(@Valid @RequestBody UserDto user) {
 		User newUser = new User();
 		newUser.setName(user.getName());
 		newUser.setSurname(user.getSurname());

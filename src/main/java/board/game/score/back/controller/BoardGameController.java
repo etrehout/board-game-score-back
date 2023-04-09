@@ -4,10 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.sun.xml.bind.v2.model.core.ID;
+import org.springframework.web.bind.annotation.*;
 
 import board.game.score.back.entity.BoardGame;
 import board.game.score.back.service.BoardGameService;
@@ -23,5 +21,10 @@ public class BoardGameController {
     @GetMapping
     public List <BoardGame> getAllBoardGames() {
         return boardGameService.getAllBoardGames();
+    }
+
+    @GetMapping("/{id}")
+    public BoardGame getBoardGameById(@PathVariable("id") Long id) {
+        return boardGameService.getBoardGameById(id);
     }
 }

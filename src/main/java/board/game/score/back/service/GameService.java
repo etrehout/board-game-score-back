@@ -18,4 +18,7 @@ public class GameService {
 		return gameRepository.findAll();
 	}
 
+	public Game getGameById(Long id) {
+		return gameRepository.findById(id);
+	}
 }

@@ -28,7 +28,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     public void onAuthenticationSuccess(HttpServletRequest request,
                                         HttpServletResponse response,
                                         Authentication authentication)
-            throws IOException, ServletException {
+            throws IOException {
         response.setStatus(HttpStatus.ACCEPTED.value());
         Map<String, Object> hashMap = new HashMap<>();
         hashMap.put("role", authentication.getAuthorities());

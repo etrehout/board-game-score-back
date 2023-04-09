@@ -10,12 +10,12 @@ import board.game.score.back.repository.RelationshipRepository;
 
 @Service
 public class RelationshipService {
-	
-	@Autowired
+
+    @Autowired
     private RelationshipRepository relationshipRepository;
 
-	public List<Relationship> getAllRelationships() {
-		return relationshipRepository.findAll();
-	}
+    public List<Relationship> getAllRelationships() {
+        return relationshipRepository.findAll();
+    }
 
 }

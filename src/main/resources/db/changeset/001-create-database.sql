@@ -1,5 +1,6 @@
 --liquibase formatted sql
 --changeset efontaine:23032023
+
 CREATE DATABASE IF NOT EXISTS board_game_score;
 
 USE board_game_score;

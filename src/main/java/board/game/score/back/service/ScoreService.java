@@ -10,12 +10,12 @@ import board.game.score.back.repository.ScoreRepository;
 
 @Service
 public class ScoreService {
-	
-	@Autowired
+
+    @Autowired
     private ScoreRepository scoreRepository;
 
-	public List<Score> getAllScores() {
-		return scoreRepository.findAll();
-	}
+    public List<Score> getAllScores() {
+        return scoreRepository.findAll();
+    }
 
 }

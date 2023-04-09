@@ -22,7 +22,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
     public void onAuthenticationFailure(HttpServletRequest request,
                                         HttpServletResponse response,
                                         AuthenticationException exception)
-            throws IOException, ServletException {
+            throws IOException {
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
         Map<String, Object> hashMap = new HashMap<>();
         hashMap.put("error", "Incorrect email or password.");

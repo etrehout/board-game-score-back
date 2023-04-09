@@ -1,21 +1,24 @@
 package board.game.score.back.service;
 
-import java.util.List;
-
+import board.game.score.back.entity.BoardGame;
+import board.game.score.back.repository.BoardGameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import board.game.score.back.entity.BoardGame;
-import board.game.score.back.repository.BoardGameRepository;
+import java.util.List;
 
 @Service
 public class BoardGameService {
-	
-	@Autowired
+
+    @Autowired
     private BoardGameRepository boardGameRepository;
 
-	public List<BoardGame> getAllBoardGames() {
-		return boardGameRepository.findAll();
-	}
+    public List<BoardGame> getAllBoardGames() {
+        return boardGameRepository.findAll();
+    }
+
+    public BoardGame getBoardGameById(Long id) {
+        return boardGameRepository.findById(id);
+    }
 
 }

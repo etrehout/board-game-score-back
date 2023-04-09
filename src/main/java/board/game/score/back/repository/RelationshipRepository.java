@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 import board.game.score.back.entity.Relationship;
 
 @Repository
-public interface RelationshipRepository 
-	extends JpaRepository<Relationship, String> {
+public interface RelationshipRepository extends JpaRepository<Relationship, String> {
 }
